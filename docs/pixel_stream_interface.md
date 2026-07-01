@@ -8,7 +8,7 @@ The design uses a valid-only streaming interface. A new pixel can be accepted ev
 
 ---
 
-# Top-Level Interface
+## Top-Level Interface
 
 | Signal | Direction | Width | Description |
 |---------|-----------|------:|-------------|
@@ -22,7 +22,7 @@ The design uses a valid-only streaming interface. A new pixel can be accepted ev
 
 ---
 
-# Parameters
+## Parameters
 
 | Parameter | Description |
 |-----------|-------------|
@@ -36,7 +36,7 @@ parameter IMAGE_WIDTH = 1280;
 
 ---
 
-# Line Buffer Interface
+## Line Buffer Interface
 
 The line buffer stores the previous two image rows using BRAM.
 
@@ -60,7 +60,7 @@ The line buffer stores the previous two image rows using BRAM.
 
 ---
 
-# Window Generator Interface
+## Window Generator Interface
 
 The window generator constructs the 3×3 neighbourhood required for convolution.
 
@@ -87,7 +87,7 @@ Each output represents one pixel of the current 3×3 sliding window.
 
 ---
 
-# Convolution Core Interface
+## Convolution Core Interface
 
 The convolution core receives the complete 3×3 window and applies the selected convolution kernel.
 
@@ -108,13 +108,13 @@ p20 p21 p22
 
 ---
 
-# Streaming Protocol
+## Streaming Protocol
 
 The accelerator processes one valid pixel per clock cycle after the pipeline is filled. Data validity is propagated through the processing stages using the `valid_in` and `valid_out` signals, enabling continuous streaming operation.
 
 ---
 
-# Data Format
+## Data Format
 
 - Pixel format: Unsigned 8-bit grayscale
 - Processing: Streaming
@@ -123,7 +123,7 @@ The accelerator processes one valid pixel per clock cycle after the pipeline is 
 
 ---
 
-# Supported Kernels
+## Supported Kernels
 
 The convolution core supports multiple kernels selected using `select_kernel`.
 
@@ -137,7 +137,7 @@ Examples include:
 
 ---
 
-# Design Notes
+## Design Notes
 
 - Parameterized image width.
 - BRAM-based line buffering.
